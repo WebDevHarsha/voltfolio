@@ -1,8 +1,10 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Zap } from "lucide-react"
+import { X, Mail, Github, Linkedin, Youtube } from "lucide-react"
 
 export default function FloatingPromptButton() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,9 +19,10 @@ export default function FloatingPromptButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 w-16 h-16 bg-electric text-background rounded-full shadow-2xl flex items-center justify-center z-50 hover:shadow-electric/50 transition-shadow"
+        className="fixed bottom-8 right-8 bg-electric text-background rounded-full shadow-2xl flex items-center gap-2 px-6 py-4 z-50 hover:shadow-electric/50 transition-shadow font-black text-lg"
       >
-        <Zap className="w-8 h-8" />
+        <Mail className="w-6 h-6" />
+        Let's Connect
       </motion.button>
 
       {/* Modal */}
@@ -45,8 +48,8 @@ export default function FloatingPromptButton() {
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-4xl font-black text-electric flex items-center gap-3">
-                  <Zap className="w-10 h-10" />
-                  Try My Prompts!
+                  <Mail className="w-10 h-10" />
+                  Let's Connect!
                 </h3>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -57,24 +60,52 @@ export default function FloatingPromptButton() {
               </div>
 
               <div className="space-y-6">
-                <PromptCard
-                  emoji="⚡"
-                  title="Lightning Fast Code Gen"
-                  description="Perfect for building full-stack applications with modern frameworks"
-                  prompt="Create a responsive dashboard with real-time data visualization using React, TypeScript, and Recharts. Include dark mode toggle and smooth animations."
-                />
-                <PromptCard
-                  emoji="✨"
-                  title="AI-Powered Creativity"
-                  description="Ideal for designing unique and memorable user experiences"
-                  prompt="Design a creative portfolio landing page with bold typography, electric blue accents, and interactive hover effects that showcase personality."
-                />
-                <PromptCard
-                  emoji="🤖"
-                  title="Smart Automation"
-                  description="Great for streamlining development workflows"
-                  prompt="Build an intelligent Git commit message generator that analyzes code changes and creates meaningful, conventional commit messages automatically."
-                />
+                <div className="bg-background border-2 border-neon rounded-2xl p-6">
+                  <h4 className="text-2xl font-bold text-neon mb-4">Get in Touch</h4>
+                  <p className="text-foreground mb-6 leading-relaxed">
+                    I'm always excited to collaborate on new projects or discuss opportunities. Feel free to reach out!
+                  </p>
+
+                  <div className="space-y-4">
+                    <a
+                      href="mailto:vasriharsha@gmail.com"
+                      className="flex items-center gap-3 text-foreground hover:text-electric transition-colors group"
+                    >
+                      <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span className="font-mono">vasriharsha@gmail.com</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-background border-2 border-electric rounded-2xl p-6">
+                  <h4 className="text-2xl font-bold text-electric mb-4">Find Me Online</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <SocialLink
+                      href="https://github.com/WebDevHarsha"
+                      icon={<Github className="w-6 h-6" />}
+                      label="GitHub"
+                    />
+                    <SocialLink
+                      href="https://www.linkedin.com/in/sri-harsha-v-a-a64643273/"
+                      icon={<Linkedin className="w-6 h-6" />}
+                      label="LinkedIn"
+                    />
+                    <SocialLink
+                      href="https://www.youtube.com/@VASRIHARSHA"
+                      icon={<Youtube className="w-6 h-6" />}
+                      label="YouTube"
+                    />
+                    <SocialLink
+                      href="https://x.com/WeberHarsha"
+                      icon={
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                      }
+                      label="Twitter"
+                    />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </>
@@ -84,29 +115,26 @@ export default function FloatingPromptButton() {
   )
 }
 
-function PromptCard({
-  emoji,
-  title,
-  description,
-  prompt,
+function SocialLink({
+  href,
+  icon,
+  label,
 }: {
-  emoji: string
-  title: string
-  description: string
-  prompt: string
+  href: string
+  icon: React.ReactNode
+  label: string
 }) {
   return (
-    <motion.div whileHover={{ scale: 1.02 }} className="bg-background border-2 border-neon rounded-2xl p-6">
-      <div className="flex items-start gap-4 mb-3">
-        <span className="text-4xl">{emoji}</span>
-        <div>
-          <h4 className="text-xl font-bold text-neon mb-1">{title}</h4>
-          <p className="text-sm text-muted-foreground">{description}</p>
-        </div>
-      </div>
-      <div className="bg-card border border-electric/30 rounded-xl p-4">
-        <p className="text-sm text-foreground leading-relaxed font-mono">{prompt}</p>
-      </div>
-    </motion.div>
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center gap-3 bg-card border border-neon/30 rounded-xl p-4 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all group"
+    >
+      <span className="text-neon group-hover:text-electric transition-colors">{icon}</span>
+      <span className="font-bold text-foreground group-hover:text-electric transition-colors">{label}</span>
+    </motion.a>
   )
 }
