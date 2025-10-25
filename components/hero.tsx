@@ -68,30 +68,7 @@ export default function Hero({ data }: HeroProps) {
           <Zap className="w-8 h-8 text-electric" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="flex items-center justify-center gap-4 text-4xl"
-        >
-          <motion.span
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          >
-            💬
-          </motion.span>
-          <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
-            ✨
-          </motion.span>
-          <motion.span
-            animate={{ rotate: [0, -360] }}
-            transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          >
-            {"{"}
-            {"}"}
-          </motion.span>
-        </motion.div>
-
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

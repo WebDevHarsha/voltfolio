@@ -92,14 +92,7 @@ export default function Contact({ data }: ContactProps) {
           </div>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-center text-muted-foreground mt-12 text-lg"
-        >
-          Built with ⚡ for the Prompting Hackathon
-        </motion.p>
+        
       </div>
     </section>
   )
